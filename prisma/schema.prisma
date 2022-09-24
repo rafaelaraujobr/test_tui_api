@@ -9,3 +9,26 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Hotel {
+  id          String  @id @default(uuid())
+  name        String
+  country     String
+  city        String
+  star_rating Int     @default(0)
+  images      Image[]
+  price       String
+  currency    String
+  adults      Int
+
+  @@map("hotels")
+}
+
+model Image {
+  id       String @id @default(uuid())
+  url      String
+  hotel_id String
+  hotel    Hotel? @relation(fields: [hotel_id], references: [id])
+
+  @@map("images")
+}

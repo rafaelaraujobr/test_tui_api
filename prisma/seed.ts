@@ -185,7 +185,6 @@ async function main() {
     },
   });
   console.log('Hotel Spain created');
-
   await prisma.hotel.create({
     data: {
       name: 'Sao Felix Hotel Hillside and Nature',
@@ -409,6 +408,118 @@ async function main() {
     },
   });
   console.log('Hotel Portugal created');
+  await prisma.hotel.create({
+    data: {
+      name: 'Hotel d Aragona',
+      country: 'Italy',
+      city: 'Conversano',
+      currency: 'EUR',
+      region: 'Apulia',
+      adults: 2,
+      price_per_person: 104.99,
+      star_rating: 4,
+      images: {
+        create: [
+          {
+            url: 'https://static.hdpp-tui.com/ehb/giata/bigger/22/220568/220568a_hb_r_001.jpg',
+          },
+          {
+            url: 'https://static.hdpp-tui.com/ehb/giata/bigger/22/220568/220568a_hb_ro_008.jpg',
+          },
+          {
+            url: 'https://static.hdpp-tui.com/ehb/giata/bigger/22/220568/220568a_hb_ro_009.jpg',
+          },
+          {
+            url: 'https://static.hdpp-tui.com/ehb/giata/bigger/22/220568/220568a_hb_a_031.jpg',
+          },
+          {
+            url: 'https://static.hdpp-tui.com/ehb/giata/bigger/22/220568/220568a_hb_ro_002.jpg',
+          },
+          {
+            url: 'https://static.hdpp-tui.com/ehb/giata/bigger/22/220568/220568a_hb_a_033.jpg',
+          },
+          {
+            url: 'https://i.travelapi.com/hotels/3000000/2790000/2785600/2785575/a3af22a1_b.jpg',
+          },
+        ],
+      },
+    },
+  });
+  await prisma.hotel.create({
+    data: {
+      name: 'Best Western Hotel Aries',
+      country: 'Italy',
+      city: 'Vicenza',
+      currency: 'EUR',
+      region: 'Veneto',
+      adults: 2,
+      price_per_person: 107.65,
+      star_rating: 3,
+      images: {
+        create: [
+          {
+            url: 'https://static.hdpp-tui.com/ehb/giata/bigger/63/638297/638297a_hb_r_001.jpg',
+          },
+          {
+            url: 'https://static.hdpp-tui.com/ehb/giata/bigger/63/638297/638297a_hb_r_002.jpg',
+          },
+          {
+            url: 'https://static.hdpp-tui.com/ehb/giata/bigger/63/638297/638297a_hb_a_030.jpg',
+          },
+          {
+            url: 'https://static.hdpp-tui.com/ehb/giata/bigger/63/638297/638297a_hb_r_003.jpg',
+          },
+          {
+            url: 'https://static.hdpp-tui.com/ehb/giata/bigger/63/638297/638297a_hb_r_004.jpg',
+          },
+          {
+            url: 'https://static.hdpp-tui.com/ehb/giata/bigger/63/638297/638297a_hb_w_018.jpg',
+          },
+          {
+            url: 'https://i.travelapi.com/hotels/2000000/1450000/1443800/1443745/a90b5fdf_b.jpg',
+          },
+        ],
+      },
+    },
+  });
+  await prisma.hotel.create({
+    data: {
+      name: 'Mediterranea Hotel & Convention Center',
+      country: 'Italy',
+      city: 'Salerno',
+      currency: 'EUR',
+      region: 'Campania',
+      adults: 2,
+      price_per_person: 72.95,
+      star_rating: 4,
+      images: {
+        create: [
+          {
+            url: 'https://static.hdpp-tui.com/ehb/giata/bigger/63/630362/630362a_hb_r_001.jpg',
+          },
+          {
+            url: 'https://static.hdpp-tui.com/ehb/giata/bigger/63/630362/630362a_hb_ro_027.jpg',
+          },
+          {
+            url: 'https://static.hdpp-tui.com/ehb/giata/bigger/63/630362/630362a_hb_ro_018.JPG',
+          },
+          {
+            url: 'https://static.hdpp-tui.com/ehb/giata/bigger/63/630362/630362a_hb_ro_028.jpg',
+          },
+          {
+            url: 'https://static.hdpp-tui.com/ehb/giata/bigger/63/630362/630362a_hb_ro_005.JPG',
+          },
+          {
+            url: 'https://static.hdpp-tui.com/ehb/giata/bigger/63/630362/630362a_hb_ro_004.JPG',
+          },
+          {
+            url: 'https://i.travelapi.com/hotels/2000000/1740000/1736200/1736143/5084b0a2_b.jpg',
+          },
+        ],
+      },
+    },
+  });
+  console.log('Hotel Italy created');
 }
 
 main()

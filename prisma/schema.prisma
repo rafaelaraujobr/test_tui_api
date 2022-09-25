@@ -11,15 +11,16 @@ datasource db {
 }
 
 model Hotel {
-  id          String  @id @default(uuid())
-  name        String
-  country     String
-  city        String
-  star_rating Int     @default(0)
-  images      Image[]
-  price       String
-  currency    String
-  adults      Int
+  id               String  @id @default(uuid())
+  name             String  @unique
+  country          String  @default("USA")
+  city             String  @default("New York")
+  region           String  @default("Manhattan")
+  star_rating      Int     @default(1)
+  price_per_person Int     @default(100)
+  currency         String
+  adults           Int     @default(1)
+  images           Image[]
 
   @@map("hotels")
 }
@@ -28,7 +29,7 @@ model Image {
   id       String @id @default(uuid())
   url      String
   hotel_id String
-  hotel    Hotel? @relation(fields: [hotel_id], references: [id])
+  hotel    Hotel  @relation(fields: [hotel_id], references: [id])
 
   @@map("images")
 }

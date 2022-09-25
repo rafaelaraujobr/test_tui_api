@@ -11,7 +11,7 @@ export class HotelRepository {
     sort = sort || 'desc';
     page = page || 1;
     orderBy = { [orderBy || 'created_at']: sort || 'desc' };
-    perPage = perPage || 5;
+    perPage = perPage || 10;
     const offset = (page - 1) * perPage;
     const limit = parseInt(perPage);
     const where = {

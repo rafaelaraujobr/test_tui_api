@@ -179,7 +179,6 @@ async function main() {
           },
           {
             url: 'https://i.travelapi.com/hotels/1000000/540000/536700/536604/6e474bce_b.jpg',
-            source: 'GoquoPackageSearch',
           },
         ],
       },
@@ -219,7 +218,6 @@ async function main() {
           },
           {
             url: 'https://i.travelapi.com/hotels/2000000/1410000/1404100/1404007/c8a41cdc_b.jpg',
-            source: 'GoquoPackageSearch',
           },
         ],
       },
@@ -228,7 +226,7 @@ async function main() {
   await prisma.hotel.create({
     data: {
       name: 'Hotel Estoril Eden',
-      country: 'Lisbon',
+      country: 'Portugal',
       city: 'Cascais',
       currency: 'EUR',
       region: 'Autonomous Community Of The Basque Country',

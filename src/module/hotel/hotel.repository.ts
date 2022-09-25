@@ -6,18 +6,26 @@ export class HotelRepository {
   constructor(private readonly prisma: PrismaService) {}
 
   async findAll(query: any) {
-    let { page, perPage, orderBy, sort } = query;
+    let { page, perPage, orderBy, sort, country } = query;
+    country = country ? country.split(',') : [];
     sort = sort || 'desc';
     page = page || 1;
     orderBy = { [orderBy || 'created_at']: sort || 'desc' };
-    perPage = perPage || 10;
+    perPage = perPage || 5;
     const offset = (page - 1) * perPage;
     const limit = parseInt(perPage);
     const where = {
       name: query.name,
-      country: query.country,
-      OR: [{ name: { contains: query.search || '' } }, { country: { contains: query.search || '' } }],
+      city: query.city,
+      region: query.region,
+      OR: [
+        { name: { contains: query.search || '' } },
+        { country: { contains: query.search || '' } },
+        { city: { contains: query.search || '' } },
+        { region: { contains: query.search || '' } },
+      ],
     };
+
     const select = {
       id: true,
       name: true,
@@ -35,13 +43,13 @@ export class HotelRepository {
       this.prisma.hotel.findMany({
         skip: offset,
         take: limit,
-        where,
+        where: country.length > 0 ? { ...where, country: { in: country } } : where,
         orderBy,
         select,
       }),
-      this.prisma.hotel.count({ where }),
+      this.prisma.hotel.count({ where: country.length > 0 ? { ...where, country: { in: country } } : where }),
     ]);
-    return { records, total, pages: Math.ceil(total / limit) };
+    return { total, pages: Math.ceil(total / limit), records };
   }
 
   async findOne(id: string) {

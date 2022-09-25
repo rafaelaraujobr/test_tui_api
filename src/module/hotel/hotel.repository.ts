@@ -22,7 +22,14 @@ export class HotelRepository {
       id: true,
       name: true,
       country: true,
-      images: true,
+      city: true,
+      region: true,
+      star_rating: true,
+      price_per_person: true,
+      currency: true,
+      adults: true,
+      images: { select: { url: true } },
+      created_at: true,
     };
     const [records, total] = await this.prisma.$transaction([
       this.prisma.hotel.findMany({
@@ -38,6 +45,19 @@ export class HotelRepository {
   }
 
   async findOne(id: string) {
-    return await this.prisma.hotel.findUnique({ where: { id }, include: { images: true } });
+    const select = {
+      id: true,
+      name: true,
+      country: true,
+      city: true,
+      region: true,
+      star_rating: true,
+      price_per_person: true,
+      currency: true,
+      adults: true,
+      images: { select: { url: true } },
+      created_at: true,
+    };
+    return await this.prisma.hotel.findUnique({ where: { id }, select });
   }
 }

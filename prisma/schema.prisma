@@ -11,16 +11,17 @@ datasource db {
 }
 
 model Hotel {
-  id               String  @id @default(uuid())
-  name             String  @unique
-  country          String  @default("USA")
-  city             String  @default("New York")
-  region           String  @default("Manhattan")
-  star_rating      Int     @default(1)
-  price_per_person Int     @default(100)
+  id               String   @id @default(uuid())
+  name             String   @unique
+  country          String   @default("USA")
+  city             String   @default("New York")
+  region           String   @default("Manhattan")
+  star_rating      Int      @default(1)
+  price_per_person Float    @default(100)
   currency         String
-  adults           Int     @default(1)
+  adults           Int      @default(1)
   images           Image[]
+  created_at       DateTime @default(now())
 
   @@map("hotels")
 }

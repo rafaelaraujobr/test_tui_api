@@ -16,10 +16,7 @@ export class HotelRepository {
     const where = {
       name: query.name,
       country: query.country,
-      OR: [
-        { name: { contains: query.search || '' } },
-        { country: { contains: query.search || '' } },
-      ],
+      OR: [{ name: { contains: query.search || '' } }, { country: { contains: query.search || '' } }],
     };
     const select = {
       id: true,
@@ -41,6 +38,6 @@ export class HotelRepository {
   }
 
   async findOne(id: string) {
-    return await this.prisma.hotel.findUnique({ where: { id } });
+    return await this.prisma.hotel.findUnique({ where: { id }, include: { images: true } });
   }
 }

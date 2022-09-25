@@ -11,7 +11,7 @@ export class HotelController {
   }
 
   @Get(':id')
-  findOne(@Param('id', new ParseUUIDPipe()) id: string) {
+  async findOne(@Param('id', new ParseUUIDPipe()) id: string) {
     return this.hotelService.findOneOrFail(id);
   }
 }

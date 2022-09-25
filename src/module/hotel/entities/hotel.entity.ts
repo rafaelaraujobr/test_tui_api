@@ -11,4 +11,5 @@ export class HotelEntity implements Hotel {
   currency: string;
   adults: number;
   images: Image[];
+  created_at: Date;
 }
